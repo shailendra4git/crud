@@ -1,0 +1,55 @@
+.loginPage{
+    margin: 10% auto 0;
+}
+.loginPage .login{
+    border: 1px solid #bce8f1;
+}
+.loginPage .panel-body{
+    padding: 30px;
+}
+.error{
+    display: inline-block;
+    color: red;
+    font-size: 12px;
+}
+.form-horizontal .form-group {
+    margin: 0 0 20px 0;
+    width: 80%;
+}
+.homePage .search-container {
+    float: right;
+    margin-right: 15px;
+}
+.homePage .search-container input[type=text] {
+    padding: 5px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: 1px solid #ddd;
+}
+.homePage .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+.homePage .search-container button:hover {
+    background: #ccc;
+}
+.homePage button{
+    border: none;
+    cursor: pointer;
+    background: none;
+    outline: none;
+}
+.homePage .logout{
+    margin-top: 35px;
+    color: #23527c;
+    text-align: right;
+}
+.homePage .user{
+    padding-right: 20px;
+}

@@ -1,0 +1,135 @@
+<div class="homePage">
+    <div class="container">
+        <div class="page-header">
+            <div class="row">
+                <h1 class="col-md-6">Home</h1>
+                <div class="col-md-6 logout">
+                <i class="glyphicon glyphicon-user"></i>
+                <span class="user">John Smith</span>
+                <i class="glyphicon glyphicon-log-out"></i>
+                <a href="javascript:void(0)">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Users</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="javascript: void(0)" class="btn btn-primary" data-toggle="modal" data-target="#createModal">Create User</a>
+                    </div>
+                    <div class="search-container">
+                        <form>
+                            Search: <input type="text" ng-model="curPlace" name="search">
+                        </form>
+                    </div>
+                </div>
+
+                <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in vm.userObj | filter:curPlace">
+                        <td>{{user.name}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <button class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#updateModal" ng-click="vm.updateModal(user.id)"></button>
+                            <button class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#deleteModal" ng-click="vm.deleteModal(user.id)"></button>
+                        </td>
+                    </tr>                    
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Modal -->
+<div class="modal fade" id="createModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create User</h4>
+            </div>
+            <form name="createform" class="form-horizontal" ng-submit="vm.createUser()" novalidate>
+            <div class="modal-body">                
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="name" ng-model="vm.createUserObj.name" required>
+                    <span class="error" ng-if="createform.name.$touched && createform.name.$error.required">Please enter name!</span>                                        
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" placeholder="username" ng-model="vm.createUserObj.username" required>
+                    <span class="error" ng-if="createform.username.$touched && createform.username.$error.required">Please enter username!</span>                                        
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="password" ng-model="vm.createUserObj.password" required>
+                    <span class="error" ng-if="createform.password.$touched && createform.password.$error.required">Please enter password!</span>                                        
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="email" placeholder="email" ng-model="vm.createUserObj.email" required>
+                    <span class="error" ng-if="createform.email.$touched && createform.email.$error.required">Please enter email!</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" data-dismiss="modal" ng-disabled="createform.$invalid">Create User</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+    
+<!-- Update Modal -->
+<div class="modal fade" id="updateModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">User Details</h4>
+            </div>
+            <form name="updateform" class="form-horizontal" ng-submit="vm.updateUser()" novalidate>
+            <div class="modal-body">                
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="name" ng-model="vm.userDetails.name" required>
+                    <span class="error" ng-if="updateform.name.$touched && updateform.name.$error.required">Please enter name!</span>                                        
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="email" placeholder="email" ng-model="vm.userDetails.email" required>
+                    <span class="error" ng-if="updateform.email.$touched && updateform.email.$error.required">Please enter email!</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" data-dismiss="modal" ng-disabled="updateform.$invalid">Update User</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete User</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong class="text-danger">{{vm.userDetails.name}}</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="vm.deleteUser()">Delete User</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
