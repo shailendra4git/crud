@@ -12,22 +12,20 @@ npm start
 ### Compile and Build Client
 
 ```
-npm run build 
-
+npm run build
 ```
 
 ### Generate Models
 
 ```
-npm run generate:models 
-
+npm run generate:models
 ```
 
 ## Code
 
 * Main libraries:
 	* Node JS 8.9.1
-	* Express.js 4.16.4
+	* Express JS 4.16.4
 	* Passport 0.4.0
 	* Sequelize 4.42.0
 
